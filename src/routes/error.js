@@ -1,4 +1,4 @@
-const App = require('not-node').Application,
+const 
 	UserActions = [
 		'create'
 	],

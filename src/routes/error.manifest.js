@@ -8,7 +8,7 @@ module.exports = {
 			placeholder: 'key',
 			label: 'Key'
 		},
-    error: {
+		error: {
 			type: 'textfield',
 			placeholder: 'Error',
 			label: 'Error'
@@ -65,7 +65,7 @@ module.exports = {
 				]
 			}
 		},
-    listAndCount: {
+		listAndCount: {
 			method: 'GET',
 			isArray: false,
 			data: ['pager', 'sorter', 'filter'],

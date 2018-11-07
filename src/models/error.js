@@ -35,7 +35,7 @@ exports.thisSchema = {
 		type: Date,
 		default: Date.now
 	},
-  updatedAt: {
+	updatedAt: {
 		type: Date,
 		default: Date.now
 	},
