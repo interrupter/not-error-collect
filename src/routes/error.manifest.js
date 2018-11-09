@@ -73,6 +73,9 @@ module.exports = {
 			rules: [{
 				auth: 	true,
 				role: 	['admin']
+			},{
+				auth: 	true,
+				admin: 	true
 			}]
 		},
 		get: {

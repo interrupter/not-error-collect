@@ -1,15 +1,14 @@
 const
 	UserActions = [
-		'listAndCount',
-		'create',
-		'listAndCount',
+		'create'		
+	],
+	AdminActions = [
 		'create',
 		'update',
 		'get',
 		'getRaw',
-		'getById'
-	],
-	AdminActions = [
+		'getById',
+		'listAndCount',
 		'delete'
 	],
 	MODEL_NAME = 'Error',
