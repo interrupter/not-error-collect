@@ -13,7 +13,7 @@ exports.thisSchema = {
 		searchable: true,
 		sortable: true
 	},
-	error: {
+	details: {
 		type: Schema.Types.Mixed,
 		required: true,
 		searchable: true,

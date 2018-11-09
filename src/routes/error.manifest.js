@@ -68,10 +68,11 @@ module.exports = {
 		listAndCount: {
 			method: 'GET',
 			isArray: false,
-			data: ['pager', 'sorter', 'filter'],
+			postFix: '/:actionName',
+			data: ['pager', 'sorter', 'filter', 'searcher', 'return'],
 			rules: [{
 				auth: 	true,
-				admin: 	true
+				role: 	['admin']
 			}]
 		},
 		get: {
@@ -81,7 +82,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: 	true,
-				admin: 	true
+				role: 	['admin']
 			}],
 			title: 'Details of error',
 			fields: {
@@ -101,8 +102,8 @@ module.exports = {
 			postFix: '/:record[errorID]/:actionName',
 			data: [],
 			rules: [{
-				auth: true,
-				admin: true
+				auth: 	true,
+				role: 	['admin']
 			}]
 		},
 		getRaw: {
@@ -111,16 +112,18 @@ module.exports = {
 			postFix: '/:record[errorID]/:actionName',
 			data: [],
 			rules: [{
-				auth: true,
-				admin: true
+				auth: 	true,
+				role: 	['admin']
 			}]
 		},
 		delete: {
 			method: 'DELETE',
 			postFix: '/:record[_id]',
 			isArray: false,
-			auth: true,
-			admin: true
+			rules: [{
+				auth: 	true,
+				admin: 	true
+			}]
 		}
 	}
 };
