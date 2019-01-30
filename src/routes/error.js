@@ -13,7 +13,10 @@ const
 	MODEL_NAME = 'Error',
 	MODEL_OPTIONS = {
 		MODEL_NAME,
-		MODEL_TITLE: 	'Ошибка'
+		MODEL_TITLE: 	'Ошибка',
+		populate: {
+			listAndCount: ['key']
+		}
 	},
 	modMeta = require('not-meta');
 
