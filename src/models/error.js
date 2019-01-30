@@ -8,10 +8,11 @@ exports.enrich = {
 
 exports.thisSchema = {
 	key: {
-		type: String,
-		required: true,
+		type: 			Schema.Types.ObjectId,
+		ref: 				'Key',
+		required: 	true,
 		searchable: true,
-		sortable: true
+		sortable: 	true
 	},
 	details: {
 		type: Schema.Types.Mixed,
@@ -40,6 +41,20 @@ exports.thisSchema = {
 		default: Date.now
 	},
 };
-
+exports.thisStatics = {
+	collect(report, key, type){
+		if(type === 'error'){
+			let val = {
+				key: 			key._id,
+				details:	report.details,
+				options: 	report.options,
+				env: 			report.env
+			};
+			return this.add(val);
+		}else{
+			return Promise.resolve();
+		}
+	}
+};
 exports.thisVirtuals = {};
 exports.thisMethods = {};

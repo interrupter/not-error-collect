@@ -1,6 +1,5 @@
 const
 	UserActions = [
-		'create'		
 	],
 	AdminActions = [
 		'create',
@@ -17,8 +16,6 @@ const
 		MODEL_TITLE: 	'Ошибка'
 	},
 	modMeta = require('not-meta');
-
-module.exports = {};
 
 modMeta.extend(modMeta.Route, module.exports, AdminActions, MODEL_OPTIONS, '_');
 modMeta.extend(modMeta.Route, module.exports, UserActions, MODEL_OPTIONS);

@@ -75,7 +75,7 @@ module.exports = {
 				role: 	['admin']
 			},{
 				auth: 	true,
-				admin: 	true
+				admin: true
 			}]
 		},
 		get: {
@@ -106,7 +106,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: 	true,
-				role: 	['admin']
+				admin: true
 			}]
 		},
 		getRaw: {
@@ -116,7 +116,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: 	true,
-				role: 	['admin']
+				admin: true
 			}]
 		},
 		delete: {
@@ -125,7 +125,7 @@ module.exports = {
 			isArray: false,
 			rules: [{
 				auth: 	true,
-				admin: 	true
+				admin: true
 			}]
 		}
 	}
