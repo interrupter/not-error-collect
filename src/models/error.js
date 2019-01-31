@@ -1,4 +1,5 @@
 const Schema = require('mongoose').Schema;
+const App = require('not-node').Application;
 
 exports.thisModelName = 'Error';
 exports.enrich = {
@@ -43,6 +44,7 @@ exports.thisSchema = {
 };
 exports.thisStatics = {
 	collect(report, key, type){
+		let Error = App.getModel('not-error-collect//Error');
 		if(type === 'error'){
 			let val = {
 				key: 			key._id,
@@ -50,7 +52,7 @@ exports.thisStatics = {
 				options: 	report.options,
 				env: 			report.env
 			};
-			return this.add(val);
+			return Error.add(val);
 		}else{
 			return Promise.resolve();
 		}
