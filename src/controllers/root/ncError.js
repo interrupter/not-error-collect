@@ -73,13 +73,9 @@ class ncError extends notFramework.CRUDController {
 						return {
 							links:[
 								{
-									url: [this.getModelURL(), value, 'update'].join('/'),
-									title: 'Изменить'
+									url: [this.getModelURL(), value, 'view'].join('/'),
+									title: 'Подробнее'
 								},
-								{
-									url: [this.getModelURL(), value, 'delete'].join('/'),
-									title: 'Удалить'
-								}
 							]
 						};
 					},
@@ -93,6 +89,12 @@ class ncError extends notFramework.CRUDController {
 		});
 		this.route(params);
 		return this;
+	}
+
+	runView(params = []){
+		this.make.error({_id: params[0]}).$getRaw()
+			.then(this.renderView.bind(this))
+			.catch(notFramework.notCommon.report);
 	}
 }
 
