@@ -1,5 +1,6 @@
 const
 	UserActions = [
+		'create'
 	],
 	AdminActions = [
 		'create',
