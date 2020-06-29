@@ -112,10 +112,7 @@ class ncError extends notFramework.notController {
 
 					if (item.env){
 						if(item.env.date && item.env.date.timestamp && item.env.date.offset){
-							let offsetLocal  = Date.getTimeZoneOffset();
-							let deltaOffset = (offsetLocal - parseInt(item.env.date.offset)) * 60 * 1000;
-							let localDateTime = new Date(parseInt(item.env.date.timestamp) - deltaOffset)
-							item.datetime = localDateTime.toLocaleString(window.navigator.language);
+							item.timestamp = Common.LocalizeTimestamp(item.env.date.timestamp, item.env.date.offset);
 						}
 						item.env = JSON.stringify(item.env, null, 4);
 						item.env = item.env.replace(/([^>])\n/g, '$1<br/>');
@@ -175,13 +172,12 @@ class ncError extends notFramework.notController {
           sortable: true,
           searchable: true
         }, {
-          path: ':env.date.timestamp',
+          path: ':env.date',
           title: 'Timestamp',
           sortable: true,
           searchable: true,
           preprocessor: (value) => {
-            let t = new Date(parseInt(value));
-            return t.toLocaleString('ru-RU');
+            return Common.LocalizeTimestamp(value.timestamp, value.offset)
           }
         }, {
           path: ':details.message',
