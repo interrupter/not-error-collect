@@ -5,6 +5,10 @@
 <h2 class="h2">Ошибка {item.errorID}</h2>
 <div class="container">
   <div class="columns">
+    <div class="column is-one-fifth">Локализованное время</div>
+    <div class="column">{item.datetime}</div>
+  </div>
+  <div class="columns">
     <div class="column is-one-fifth">Название</div>
     <div class="column">{item.details.name}</div>
   </div>

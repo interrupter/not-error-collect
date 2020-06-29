@@ -109,7 +109,14 @@ class ncError extends notFramework.notController {
 						item.options = JSON.stringify(item.options, null, 4);
 						item.options = item.options.replace(/([^>])\n/g, '$1<br/>');
 					}
+
 					if (item.env){
+						if(item.env.date && item.env.date.timestamp && item.env.date.offset){
+							let offsetLocal  = Date.getTimeZoneOffset();
+							let deltaOffset = (offsetLocal - parseInt(item.env.date.offset)) * 60 * 1000;
+							let localDateTime = new Date(parseInt(item.env.date.timestamp) - deltaOffset)
+							item.datetime = localDateTime.toLocaleString(window.navigator.language);
+						}
 						item.env = JSON.stringify(item.env, null, 4);
 						item.env = item.env.replace(/([^>])\n/g, '$1<br/>');
 					}

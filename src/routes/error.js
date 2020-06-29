@@ -16,7 +16,8 @@ const
 		MODEL_NAME,
 		MODEL_TITLE: 	'Ошибка',
 		populate: {
-			listAndCount: ['key']
+			listAndCount: ['key'],
+			get: ['key']
 		},
 		RESPONSE:{
 			full: ['get']
