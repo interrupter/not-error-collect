@@ -8,7 +8,7 @@ export default class Common{
     return e instanceof Error;
   }
   static LocalizeTimestamp(timestamp, offset = 0){
-    let offsetLocal  = new Date().getTimeZoneOffset();
+    let offsetLocal  = new Date().getTimezoneOffset();
     let deltaOffset = (offsetLocal - parseInt(offset)) * 60 * 1000;
     let localDateTime = new Date(parseInt(timestamp) - deltaOffset);
     return localDateTime.toLocaleString(window.navigator.language);
