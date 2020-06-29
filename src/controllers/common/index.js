@@ -11,6 +11,6 @@ export default class Common{
     let offsetLocal  = new Date().getTimeZoneOffset();
     let deltaOffset = (offsetLocal - parseInt(offset)) * 60 * 1000;
     let localDateTime = new Date(parseInt(timestamp) - deltaOffset);
-    return = localDateTime.toLocaleString(window.navigator.language);
+    return localDateTime.toLocaleString(window.navigator.language);
   }
 };
