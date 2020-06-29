@@ -40,8 +40,9 @@ exports.thisSchema = {
 	updatedAt: {
 		type: Date,
 		default: Date.now
-	},
+	}
 };
+
 exports.thisStatics = {
 	collect(report, key, type){
 		let Error = App.getModel('not-error-collect//Error');
@@ -58,5 +59,6 @@ exports.thisStatics = {
 		}
 	}
 };
+
 exports.thisVirtuals = {};
 exports.thisMethods = {};

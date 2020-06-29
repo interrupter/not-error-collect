@@ -46,12 +46,8 @@ module.exports = {
 			isArray: false,
 			data: ['record'],
 			rules:[
-				{
-					auth: false
-				},
-				{
-					admin: true
-				}
+				{admin: true},
+				{auth: false}
 			],
 			title: 'Creation of new error',
 			fields: {
@@ -72,10 +68,10 @@ module.exports = {
 			data: ['pager', 'sorter', 'filter', 'searcher', 'return'],
 			rules: [{
 				auth: 	true,
-				role: 	['admin']
+				admin: true
 			},{
 				auth: 	true,
-				admin: true
+				role: 	['admin']
 			}]
 		},
 		get: {
@@ -84,6 +80,9 @@ module.exports = {
 			postFix: '/:record[_id]',
 			data: [],
 			rules: [{
+				auth: true,
+				admin: true
+			},{
 				auth: 	true,
 				role: 	['admin']
 			}],
@@ -116,7 +115,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: 	true,
-				admin: true
+				admin: 	true
 			}]
 		},
 		delete: {
@@ -125,7 +124,7 @@ module.exports = {
 			isArray: false,
 			rules: [{
 				auth: 	true,
-				admin: true
+				admin: 	true
 			}]
 		}
 	}

@@ -17,6 +17,9 @@ const
 		MODEL_TITLE: 	'Ошибка',
 		populate: {
 			listAndCount: ['key']
+		},
+		RESPONSE:{
+			full: ['get']
 		}
 	},
 	modMeta = require('not-meta');
