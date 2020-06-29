@@ -19,23 +19,41 @@ exports.thisSchema = {
 		type: Schema.Types.Mixed,
 		required: true,
 		searchable: true,
-		sortable: true
+		sortable: true,
+		properties: {
+			String: [
+				'name',
+				'message',
+				'stack'
+			]
+		},
 	},
 	options: {
 		type: Schema.Types.Mixed,
 		required: true,
 		searchable: true,
-		sortable: true
+		sortable: true,
+		properties: {
+			String: [''],
+			Number: [''],
+			Boolean: ['']
+		},
 	},
 	env: {
 		type: Schema.Types.Mixed,
 		required: true,
 		searchable: true,
-		sortable: true
+		sortable: true,
+		properties: {
+			String: [''],
+			Number: [''],
+			Boolean: ['browser', 'node']
+		},
 	},
 	createdAt: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
+		searchable: true
 	},
 	updatedAt: {
 		type: Date,

@@ -112,7 +112,7 @@ class ncError extends notFramework.notController {
 
 					if (item.env){
 						if(item.env.date && item.env.date.timestamp && item.env.date.offset){
-							item.timestamp = Common.LocalizeTimestamp(item.env.date.timestamp, item.env.date.offset);
+							item.datetime = Common.LocalizeTimestamp(item.env.date.timestamp, item.env.date.offset);
 						}
 						item.env = JSON.stringify(item.env, null, 4);
 						item.env = item.env.replace(/([^>])\n/g, '$1<br/>');
