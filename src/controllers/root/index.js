@@ -9,13 +9,33 @@ let manifest = {
 			}
 		]
 	},
-	menu:[{
-		title: 	'Ошибки',
-		items:[{
-			title: 'Список',
-			url: '/error'
-		}]
-	}],
+	menu:{
+		top:{
+			sections:[{
+				id: 		'system',
+				title: 	'Система'
+			}],
+			items: [{
+				section: 'system',
+				title: 	'Ошибки',
+				url: '/error'
+			}],
+		},
+		side: {
+			sections:[{
+				id: 'system',
+				title: 'Система'
+			}],
+			items:[{
+				section: 'system',
+				title: 	'Ошибки',
+				items:[{
+					title: 'Список',
+					url: '/error'
+				}]
+			}]
+		}
+	},
 };
 
 export {
