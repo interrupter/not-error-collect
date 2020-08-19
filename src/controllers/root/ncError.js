@@ -2,10 +2,10 @@ const ERROR_DEFAULT = 'Что пошло не так.';
 import {
   Breadcrumbs,
   Table as notTable,
-  UIError
+  UIError,
+  notController,
+  notCommon
 } from 'not-bulma';
-
-import { notController, notCommon } from 'not-framework';
 
 import Common from '../common/index.js';
 import UIDetails from '../common/ui.error.details.svelte';
