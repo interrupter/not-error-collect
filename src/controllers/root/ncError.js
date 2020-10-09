@@ -33,7 +33,7 @@ class ncError extends ncCRUD {
         page: 0
       },
       sorter: {
-				id: -1
+				errorID: -1
 			},
       showSelect: true,
       showSearch: true,
