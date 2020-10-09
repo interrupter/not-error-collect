@@ -63,8 +63,8 @@ exports.thisSchema = {
 
 exports.thisStatics = {
 	collect(report, key, type){
-		let Error = App.getModel('not-error-collect//Error');
 		if(type === 'error'){
+			let Error = App.getModel('not-error-collect//Error');
 			let val = {
 				key: 			key._id,
 				details:	report.details,
