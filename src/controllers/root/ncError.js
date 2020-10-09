@@ -32,6 +32,9 @@ class ncError extends ncCRUD {
         size: 100,
         page: 0
       },
+      sorter: {
+				id: -1
+			},
       showSelect: true,
       showSearch: true,
       idField: '_id',
