@@ -1,6 +1,6 @@
 {
 	"name": "not-error-collect",
-	"version": "0.0.25",
+	"version": "0.0.26",
 	"description": "not-* family module for collecting error reports",
 	"main": "index.js",
 	"scripts": {
@@ -26,6 +26,7 @@
 	},
 	"homepage": "https://github.com/interrupter/not-error-collect#readme",
 	"dependencies": {
+		"highlight.js": "^10.2.1",
 		"not-meta": "*"
 	},
 	"devDependencies": {

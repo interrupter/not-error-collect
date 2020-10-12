@@ -1,3 +1,4 @@
+import UIJSON from '../common/json.svelte';
 import Validators from '../common/validators.js';
 import Common from '../common';
 import {
@@ -12,10 +13,10 @@ const LABELS = {
   single: 'Ошибка',
 };
 
-
 class ncError extends ncCRUD {
   constructor(app, params) {
     super(app, `${MODULE_NAME}.${MODEL_NAME}`);
+    Form.addComponent('UIJSON', UIJSON);
     this.setModuleName(MODULE_NAME.toLowerCase());
     this.setModelName(MODEL_NAME.toLowerCase());
     this.setOptions('names', LABELS);

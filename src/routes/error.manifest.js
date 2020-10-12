@@ -1,44 +1,20 @@
+const initFromSchema = require('not-node').Fields.fromSchema;
+const modelSchema = require('../models/error').thisSchema;
+
+const FIELDS = initFromSchema(modelSchema, [
+	'_id',
+	['errorID', {}, 'ID'],
+	['key', {
+		label: 'Key',
+		placeholder: 'Key'
+	}, 'userId']
+]);
+
+
 module.exports = {
   model: 'error',
   url: '/api/:modelName',
-  fields: {
-    key: {
-      type: 'textfield',
-      disabled: true,
-      placeholder: 'key',
-      label: 'Key'
-    },
-    error: {
-      type: 'textfield',
-      placeholder: 'Error',
-      label: 'Error'
-    },
-    options: {
-      type: 'textfield',
-      placeholder: 'Options',
-      label: 'Options'
-    },
-    env: {
-      type: 'textfield',
-      placeholder: 'Environment',
-      label: 'Environment'
-    },
-    createdAt: {
-      type: 'textfield',
-      disabled: true,
-      placeholder: 'Created at',
-      label: 'Created at'
-    },
-    updatedAt: {
-      type: 'textfield',
-      disabled: true,
-      placeholder: 'Updated at',
-      label: 'Updated at'
-    },
-    submit: {
-      type: 'submit'
-    }
-  },
+  fields: FIELDS,
   actions: {
     //ключи это название действий
     create: {
