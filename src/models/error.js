@@ -83,13 +83,13 @@ try {
 					env: 			report.env
 				};
 				if(val.details){
-					val.hashDetails = this.createObjectHash(val.details);
+					val.hashDetails = Error.createObjectHash(val.details);
 				}
 				if(val.options){
-					val.hashOptions = this.createObjectHash(val.options);
+					val.hashOptions = Error.createObjectHash(val.options);
 				}
 				if(val.env){
-					val.hashEnv = this.createObjectHash(val.env);
+					val.hashEnv = Error.createObjectHash(val.env);
 				}
 				val.repetitionDetails = await Error.countWithFilter({key: key._id, hashDetails});
 				val.repetitionOptions = await Error.countWithFilter({key: key._id, hashOptions});
