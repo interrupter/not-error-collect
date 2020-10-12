@@ -7,7 +7,10 @@ const FIELDS = initFromSchema(modelSchema, [
 	['key', {
 		label: 'Key',
 		placeholder: 'Key'
-	}, 'userId']
+	}, 'userId'],
+	['error', {}, 'json'],
+	['options', {}, 'json'],
+	['env', {}, 'json']
 ]);
 
 

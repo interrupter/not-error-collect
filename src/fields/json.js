@@ -8,8 +8,6 @@ module.exports = {
 	},
 	model:{
 		type: Schema.Types.Mixed,
-		required: false,
-		searchable: false,
-		sortable: false
+		required: false
 	}
 };

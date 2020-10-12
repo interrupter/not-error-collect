@@ -5,5 +5,6 @@ module.exports = {
 		routes:				path.join(__dirname, 'routes'),
 		controllers:	path.join(__dirname, 'controllers'),
 		models:				path.join(__dirname, 'models'),
+		fields:				path.join(__dirname, 'fields'),
 	}
 };
