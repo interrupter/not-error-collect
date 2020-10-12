@@ -124,11 +124,6 @@ class ncError extends ncCRUD {
 					return res;
 				}
 			},{
-				path: ':details.message',
-				title: 'Сообщение',
-				sortable: true,
-				searchable: true
-			}, {
 				path: ':env.date',
 				title: 'Timestamp',
 				sortable: true,
