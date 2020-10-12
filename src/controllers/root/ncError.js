@@ -72,18 +72,6 @@ class ncError extends ncCRUD {
 							action: this.goDetails.bind(this, value),
 							title: 'Подробнее',
 							size: 'small'
-						},
-						{
-							action: this.goUpdate.bind(this, value),
-							title: 'Изменить',
-							size: 'small'
-						},
-						{
-							action: this.goDelete.bind(this, value),
-							color: 'danger',
-							title: 'Удалить',
-							size: 'small',
-							style: 'outlined'
 						}
 					];
 				},

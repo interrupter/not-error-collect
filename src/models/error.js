@@ -16,6 +16,7 @@ try {
 		],
 		['details', {
 			required: true,
+			searchable: true,
 			properties: {
 				String: [
 					'name',
@@ -26,6 +27,7 @@ try {
 		}, 'json'],
 		['options', {
 			required: true,
+			searchable: true,
 			properties: {
 				String: [''],
 				Number: [''],
@@ -34,6 +36,7 @@ try {
 		}, 'json'],
 		['env', {
 			required: true,
+			searchable: true,
 			properties: {
 				String: [''],
 				Number: [''],
