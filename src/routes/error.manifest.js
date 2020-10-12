@@ -10,7 +10,13 @@ const FIELDS = initFromSchema(modelSchema, [
 	}, 'userId'],
 	['details', {}, 'error'],
 	['options', {label: 'Дополнительная информация'}, 'json'],
-	['env', {label: 'Окружение'}, 'json']
+	['env', {label: 'Окружение'}, 'json'],
+	['hashDetails', 	{	label: 'hash деталей ошибки'	}, 'hash'],
+	['hashOptions', 	{	label: 'hash дополнительных данных'}, 'hash'],
+	['hashEnv', {	label: 'hash данных окружения'	}, 'hash'],
+	['repetitionDetails', {label: 'Ошибок с такими же деталями'} , 'counter'],
+	['repetitionOptions', {label: 'Ошибок с такими же доп. данными'} , 'counter'],
+	['repetitionEnv', {label: 'Ошибок в таком же окружении'} , 'counter'],
 ]);
 
 module.exports = {
@@ -54,7 +60,13 @@ module.exports = {
 				'details',
 				'options',
 				'env',
-				'createdAt'
+				'hashDetails',
+				'hashOptions',
+				'hashEnv',
+				'repetitionDetails',
+				'repetitionOptions',
+				'repetitionEnv',
+				'createdAt',
 			],
 			rules: [{
 				auth: true,
@@ -83,6 +95,12 @@ module.exports = {
 				'details',
 				'options',
 				'env',
+				'hashDetails',
+				'hashOptions',
+				'hashEnv',
+				'repetitionDetails',
+				'repetitionOptions',
+				'repetitionEnv',
 				'createdAt'
 			]
 		},

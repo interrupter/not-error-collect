@@ -2,6 +2,7 @@ const log = require('not-log')(module, 'Error Model');
 try {
 	const App = require('not-node').Application;
 	const initFields = require('not-node').Fields.initFields;
+	const crypto = require('crypto');
 
 	const MODEL_NAME = 'Error';
 
@@ -43,6 +44,12 @@ try {
 				Boolean: ['browser', 'node']
 			},
 		}, 'json'],
+		['hashDetails', 	{}, 'hash'],
+		['hashOptions', 	{}, 'hash'],
+		['hashEnv', {}, 'hash'],
+		['repetitionDetails', {} , 'counter'],
+		['repetitionOptions', {} , 'counter'],
+		['repetitionEnv', {} , 'counter'],
 		'createdAt',
 		'updatedAt'
 	];
@@ -57,18 +64,39 @@ try {
 	};
 
 	exports.thisStatics = {
-		collect(report, key, type) {
+		createObjectHash(val){
+			if(typeof val === 'object'){
+				const hasher = crypto.createHash('sha256');
+				hasher.update(JSON.stringify(val));
+				return hash.digest('hex');
+			}else{
+				return undefined;
+			}
+		},
+		async collect(report, key, type) {
 			if (type === 'error') {
 				let Error = App.getModel('not-error-collect//Error');
 				let val = {
-					key: key._id,
-					details: report.details,
-					options: report.options,
-					env: report.env
+					key: 			key._id,
+					details: 	report.details,
+					options: 	report.options,
+					env: 			report.env
 				};
+				if(val.details){
+					val.hashDetails = this.createObjectHash(val.details);
+				}
+				if(val.options){
+					val.hashOptions = this.createObjectHash(val.options);
+				}
+				if(val.env){
+					val.hashEnv = this.createObjectHash(val.env);
+				}
+				val.repetitionDetails = await Error.countWithFilter({key: key._id, hashDetails});
+				val.repetitionOptions = await Error.countWithFilter({key: key._id, hashOptions});
+				val.repetitionEnv = 		await Error.countWithFilter({key: key._id, hashEnv});
 				return Error.add(val);
 			} else {
-				return Promise.resolve();
+				return;
 			}
 		}
 	};

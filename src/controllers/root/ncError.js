@@ -53,6 +53,16 @@ class ncError extends ncCRUD {
 				sortable: true,
 				searchable: true
 			}, {
+				path: ':details.name',
+				title: 'Сообщение',
+				sortable: true,
+				searchable: true
+			},{
+				path: ':details.message',
+				title: 'Сообщение',
+				sortable: true,
+				searchable: true
+			}, {
 				path: ':env',
 				title: 'Среда',
 				type: 'tag',
@@ -82,7 +92,43 @@ class ncError extends ncCRUD {
 						});
 					}
 				}
+			}, {
+				path: ':repetitions',
+				title: 'Повторения',
+				sortable: false,
+				searchable: false,
+				type: 		'tag',
+				preprocessor: (value, item) => {
+					let res = [];
+					if(Object.prototype.hasOwnProperty.call(item, 'repetitionDetails')){
+						res.push({
+		            id:     `repetitionDetails`,
+		            type:   'danger',
+		            title:  `Ошибок: ${value.repetitionDetails}`
+						});
+					}
+					if(Object.prototype.hasOwnProperty.call(item, 'repetitionEnv')){
+						res.push({
+		            id:     `repetitionEnv`,
+		            type:   'warning',
+		            title:  `Ошибок: ${value.repetitionEnv}`
+						});
+					}
+					if(Object.prototype.hasOwnProperty.call(item, 'repetitionOptions')){
+						res.push({
+		            id:     `repetitionOptions`,
+		            type:   'info',
+		            title:  `Дополнительной информации: ${value.repetitionOptions}`
+						});
+					}
+					return res;
+				}
 			},{
+				path: ':details.message',
+				title: 'Сообщение',
+				sortable: true,
+				searchable: true
+			}, {
 				path: ':env.date',
 				title: 'Timestamp',
 				sortable: true,
@@ -90,11 +136,6 @@ class ncError extends ncCRUD {
 				preprocessor: (value) => {
 					return Common.LocalizeTimestamp(value.timestamp, value.offset);
 				}
-			}, {
-				path: ':details.message',
-				title: 'Сообщение',
-				sortable: true,
-				searchable: true
 			}, {
 				path: ':_id',
 				title: 'Действия',
