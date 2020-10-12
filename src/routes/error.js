@@ -20,7 +20,7 @@ const
 			get: ['key']
 		},
 		RESPONSE:{
-			full: ['get']
+			full: ['get','getRaw','create']
 		}
 	},
 	modMeta = require('not-meta');
