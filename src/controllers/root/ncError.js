@@ -1,4 +1,4 @@
-import UIJSON from '../common/json.svelte';
+import UIJSON from '../common/ui.json.svelte';
 import Validators from '../common/validators.js';
 import Common from '../common';
 import {
