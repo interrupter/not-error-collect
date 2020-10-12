@@ -68,35 +68,42 @@ try {
 			if(typeof val === 'object'){
 				const hasher = crypto.createHash('sha256');
 				hasher.update(JSON.stringify(val));
-				return hash.digest('hex');
+				return hasher.digest('hex');
 			}else{
 				return undefined;
 			}
 		},
 		async collect(report, key, type) {
-			if (type === 'error') {
-				let Error = App.getModel('not-error-collect//Error');
-				let val = {
-					key: 			key._id,
-					details: 	report.details,
-					options: 	report.options,
-					env: 			report.env
-				};
-				if(val.details){
-					val.hashDetails = Error.createObjectHash(val.details);
+			try{
+				if (type === 'error') {
+					let Error = App.getModel('not-error-collect//Error');
+					let val = {
+						key: 			key._id,
+						details: 	report.details,
+						options: 	report.options,
+						env: 			report.env
+					};
+					if(val.details){
+						val.hashDetails = Error.createObjectHash(val.details);
+					}
+					if(val.options){
+						val.hashOptions = Error.createObjectHash(val.options);
+					}
+					if(val.env){
+						let dateBack = val.env.date.timestamp;
+						delete val.env.date.timestamp;
+						val.hashEnv = Error.createObjectHash(val.env);
+						val.env.date.timestamp = dateBack;
+					}
+					val.repetitionDetails = await Error.countWithFilter({key: key._id, hashDetails: val.hashDetails});
+					val.repetitionOptions = await Error.countWithFilter({key: key._id, hashOptions: val.hashOptions});
+					val.repetitionEnv = 		await Error.countWithFilter({key: key._id, hashEnv: val.hashEnv});
+					return Error.add(val);
+				} else {
+					return;
 				}
-				if(val.options){
-					val.hashOptions = Error.createObjectHash(val.options);
-				}
-				if(val.env){
-					val.hashEnv = Error.createObjectHash(val.env);
-				}
-				val.repetitionDetails = await Error.countWithFilter({key: key._id, hashDetails});
-				val.repetitionOptions = await Error.countWithFilter({key: key._id, hashOptions});
-				val.repetitionEnv = 		await Error.countWithFilter({key: key._id, hashEnv});
-				return Error.add(val);
-			} else {
-				return;
+			}catch(e){
+				log.error(e);
 			}
 		}
 	};

@@ -115,7 +115,7 @@ class ncError extends ncCRUD {
 						res.push({
 							id: `repetitionEnv`,
 							type: 'warning',
-							title: `Ошибок: ${item.repetitionEnv}`
+							title: `Окружения: ${item.repetitionEnv}`
 						});
 					}
 					if (Object.prototype.hasOwnProperty.call(item, 'repetitionOptions')) {

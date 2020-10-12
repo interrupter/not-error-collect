@@ -1,6 +1,6 @@
 {
 	"name": "not-error-collect",
-	"version": "0.0.39",
+	"version": "0.0.40",
 	"description": "not-* family module for collecting error reports",
 	"main": "index.js",
 	"scripts": {
