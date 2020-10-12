@@ -51,6 +51,34 @@ class ncError extends ncCRUD {
 				sortable: true,
 				searchable: true
 			}, {
+				path: ':env',
+				title: 'Среда',
+				type: 'tag',
+				sortable: false,
+				searchable: true,
+				preprocessor: (value) => {
+					return [{
+            id:     'runner',
+            type:   'info',
+            title:  value.browser?'Клиент':'Сервер'
+					}];
+				}
+			},{
+				path: 		':options',
+				title: 		'Дополнительно',
+				type: 		'tag',
+				sortable: 	false,
+				searchable: true,
+				preprocessor: (value) => {
+					return Object.keys(value).map(t =>	{
+						return {
+	            id:     `options.${t}`,
+	            type:   'info',
+	            title:  t
+						};
+					});
+				}
+			},{
 				path: ':env.date',
 				title: 'Timestamp',
 				sortable: true,

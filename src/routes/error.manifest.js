@@ -54,8 +54,7 @@ module.exports = {
 				'details',
 				'options',
 				'env',
-				'createdAt',
-				'updatedAt'
+				'createdAt'
 			],
 			rules: [{
 				auth: true,
@@ -85,8 +84,7 @@ module.exports = {
 				'details',
 				'options',
 				'env',
-				'createdAt',
-				'updatedAt'
+				'createdAt'
 			]
 		},
 		getById: {
