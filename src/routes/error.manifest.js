@@ -8,7 +8,7 @@ const FIELDS = initFromSchema(modelSchema, [
 		label: 'Key',
 		placeholder: 'Key'
 	}, 'userId'],
-	['details', {label: 'Подробности ошибки'}, 'json'],
+	['details', {}, 'error'],
 	['options', {label: 'Дополнительная информация'}, 'json'],
 	['env', {label: 'Окружение'}, 'json']
 ]);
@@ -35,8 +35,8 @@ module.exports = {
 				admin: [
 					'key',
 					'details',
-					'options',
 					'env',
+					'options',
 					'createdAt', 'updatedAt',
 					'submit'
 				]
@@ -78,7 +78,6 @@ module.exports = {
 			}],
 			title: 'Details of error',
 			fields: [
-				'_id',
 				'errorID',
 				'key',
 				'details',

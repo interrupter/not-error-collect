@@ -1,4 +1,5 @@
 import UIJSON from '../common/ui.json.svelte';
+import UIError from '../common/ui.error.svelte';
 import Validators from '../common/validators.js';
 import Common from '../common';
 import {
@@ -18,6 +19,7 @@ class ncError extends ncCRUD {
 	constructor(app, params) {
 		super(app, `${MODULE_NAME}.${MODEL_NAME}`);
 		Form.addComponent('UIJSON', UIJSON);
+		Form.addComponent('UIError', UIError);
 		this.setModuleName(MODULE_NAME.toLowerCase());
 		this.setModelName(MODEL_NAME.toLowerCase());
 		this.setOptions('names', LABELS);

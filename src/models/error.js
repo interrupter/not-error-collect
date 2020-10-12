@@ -24,7 +24,7 @@ try {
 					'stack'
 				]
 			},
-		}, 'json'],
+		}, 'error'],
 		['options', {
 			required: true,
 			searchable: true,
