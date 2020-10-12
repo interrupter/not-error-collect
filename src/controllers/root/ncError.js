@@ -70,13 +70,15 @@ class ncError extends ncCRUD {
 				sortable: 	false,
 				searchable: true,
 				preprocessor: (value) => {
-					return Object.keys(value).map(t =>	{
-						return {
-	            id:     `options.${t}`,
-	            type:   'info',
-	            title:  t
-						};
-					});
+					if(value){
+						return Object.keys(value).map(t =>	{
+							return {
+		            id:     `options.${t}`,
+		            type:   'info',
+		            title:  t
+							};
+						});
+					}
 				}
 			},{
 				path: ':env.date',
