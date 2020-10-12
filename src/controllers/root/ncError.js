@@ -29,8 +29,8 @@ class ncError extends ncCRUD {
 		this.setOptions('list', {
 			interface: {
 				factory: this.make.error,
-				combined: true,
-				combinedAction: 'listAndCount'
+					combined: true,
+					combinedAction: 'listAndCount'
 			},
 			pager: {
 				size: 100,
@@ -57,7 +57,7 @@ class ncError extends ncCRUD {
 				title: 'Сообщение',
 				sortable: true,
 				searchable: true
-			},{
+			}, {
 				path: ':details.message',
 				title: 'Сообщение',
 				sortable: true,
@@ -69,25 +69,29 @@ class ncError extends ncCRUD {
 				sortable: false,
 				searchable: true,
 				preprocessor: (value) => {
-					return [{
-            id:     'runner',
-            type:   'info',
-            title:  value.browser?'Клиент':'Сервер'
-					}];
+					if (value) {
+						return [{
+							id: 'runner',
+							type: 'info',
+							title: value.browser ? 'Клиент' : 'Сервер'
+						}];
+					} else {
+						return [];
+					}
 				}
-			},{
-				path: 		':options',
-				title: 		'Дополнительно',
-				type: 		'tag',
-				sortable: 	false,
+			}, {
+				path: ':options',
+				title: 'Дополнительно',
+				type: 'tag',
+				sortable: false,
 				searchable: true,
 				preprocessor: (value) => {
-					if(value){
-						return Object.keys(value).map(t =>	{
+					if (value) {
+						return Object.keys(value).map(t => {
 							return {
-		            id:     `options.${t}`,
-		            type:   'info',
-		            title:  t
+								id: `options.${t}`,
+								type: 'info',
+								title: t
 							};
 						});
 					}
@@ -97,33 +101,33 @@ class ncError extends ncCRUD {
 				title: 'Повторения',
 				sortable: false,
 				searchable: false,
-				type: 		'tag',
+				type: 'tag',
 				preprocessor: (value, item) => {
 					let res = [];
-					if(Object.prototype.hasOwnProperty.call(item, 'repetitionDetails')){
+					if (Object.prototype.hasOwnProperty.call(item, 'repetitionDetails')) {
 						res.push({
-		            id:     `repetitionDetails`,
-		            type:   'danger',
-		            title:  `Ошибок: ${value.repetitionDetails}`
+							id: `repetitionDetails`,
+							type: 'danger',
+							title: `Ошибок: ${item.repetitionDetails}`
 						});
 					}
-					if(Object.prototype.hasOwnProperty.call(item, 'repetitionEnv')){
+					if (Object.prototype.hasOwnProperty.call(item, 'repetitionEnv')) {
 						res.push({
-		            id:     `repetitionEnv`,
-		            type:   'warning',
-		            title:  `Ошибок: ${value.repetitionEnv}`
+							id: `repetitionEnv`,
+							type: 'warning',
+							title: `Ошибок: ${item.repetitionEnv}`
 						});
 					}
-					if(Object.prototype.hasOwnProperty.call(item, 'repetitionOptions')){
+					if (Object.prototype.hasOwnProperty.call(item, 'repetitionOptions')) {
 						res.push({
-		            id:     `repetitionOptions`,
-		            type:   'info',
-		            title:  `Дополнительной информации: ${value.repetitionOptions}`
+							id: `repetitionOptions`,
+							type: 'info',
+							title: `Дополнительной информации: ${item.repetitionOptions}`
 						});
 					}
 					return res;
 				}
-			},{
+			}, {
 				path: ':env.date',
 				title: 'Timestamp',
 				sortable: true,
@@ -137,11 +141,10 @@ class ncError extends ncCRUD {
 				type: 'button',
 				preprocessor: (value) => {
 					return [{
-							action: this.goDetails.bind(this, value),
-							title: 'Подробнее',
-							size: 'small'
-						}
-					];
+						action: this.goDetails.bind(this, value),
+						title: 'Подробнее',
+						size: 'small'
+					}];
 				},
 			}]
 		});
