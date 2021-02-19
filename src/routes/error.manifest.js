@@ -30,7 +30,7 @@ module.exports = {
 			isArray: false,
 			data: ['record'],
 			rules: [{
-					admin: true
+					root: true
 				},
 				{
 					auth: false
@@ -38,7 +38,7 @@ module.exports = {
 			],
 			title: 'Creation of new error',
 			fields: {
-				admin: [
+				root: [
 					'key',
 					'details',
 					'env',
@@ -70,7 +70,7 @@ module.exports = {
 			],
 			rules: [{
 				auth: true,
-				admin: true
+				root: true
 			}, {
 				auth: true,
 				role: ['admin']
@@ -83,7 +83,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: true,
-				admin: true
+				root: true
 			}, {
 				auth: true,
 				role: ['admin']
@@ -111,7 +111,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: true,
-				admin: true
+				root: true
 			}]
 		},
 		getRaw: {
@@ -121,7 +121,7 @@ module.exports = {
 			data: [],
 			rules: [{
 				auth: true,
-				admin: true
+				root: true
 			}]
 		},
 		delete: {
@@ -130,7 +130,7 @@ module.exports = {
 			isArray: false,
 			rules: [{
 				auth: true,
-				admin: true
+				root: true
 			}]
 		}
 	}
