@@ -5,7 +5,7 @@
 </script>
 
 
-<div class="control">
+<div class="control box">
   <p class="title is-6">Название</p>
   <pre>
     <code>{value.name}</code>

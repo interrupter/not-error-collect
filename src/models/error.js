@@ -26,6 +26,17 @@ try {
 				]
 			},
 		}, 'error'],
+		['parent', {
+			required: true,
+			searchable: true,
+			properties: {
+				String: [
+					'name',
+					'message',
+					'stack'
+				]
+			},
+		}, 'json'],
 		['options', {
 			required: true,
 			searchable: true,
@@ -46,9 +57,11 @@ try {
 		}, 'json'],
 		['hashDetails', 	{}, 'hash'],
 		['hashOptions', 	{}, 'hash'],
+		['hashParent', 	{}, 'hash'],
 		['hashEnv', {}, 'hash'],
 		['repetitionDetails', {} , 'counter'],
 		['repetitionOptions', {} , 'counter'],
+		['repetitionParent', {} , 'counter'],
 		['repetitionEnv', {} , 'counter'],
 		'createdAt',
 		'updatedAt'
@@ -81,6 +94,7 @@ try {
 						key: 			key._id,
 						details: 	report.details,
 						options: 	report.options,
+						parent: 	report.parent,
 						env: 			report.env
 					};
 					if(val.details){
@@ -88,6 +102,9 @@ try {
 					}
 					if(val.options){
 						val.hashOptions = Error.createObjectHash(val.options);
+					}
+					if(val.parent){
+						val.parentOptions = Error.createObjectHash(val.parent);
 					}
 					if(val.env){
 						let dateBack = val.env.date.timestamp;
@@ -97,6 +114,7 @@ try {
 					}
 					val.repetitionDetails = await Error.countWithFilter({key: key._id, hashDetails: val.hashDetails});
 					val.repetitionOptions = await Error.countWithFilter({key: key._id, hashOptions: val.hashOptions});
+					val.repetitionParent = 	await Error.countWithFilter({key: key._id, hashParent: val.hashParent});
 					val.repetitionEnv = 		await Error.countWithFilter({key: key._id, hashEnv: val.hashEnv});
 					return Error.add(val);
 				} else {

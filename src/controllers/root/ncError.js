@@ -118,6 +118,13 @@ class ncError extends ncCRUD {
 							title: `Окружения: ${item.repetitionEnv}`
 						});
 					}
+					if (Object.prototype.hasOwnProperty.call(item, 'repetitionParent')) {
+						res.push({
+							id: `repetitionParent`,
+							type: 'warning',
+							title: `Оригиналов: ${item.repetitionParent}`
+						});
+					}
 					if (Object.prototype.hasOwnProperty.call(item, 'repetitionOptions')) {
 						res.push({
 							id: `repetitionOptions`,
@@ -154,6 +161,10 @@ class ncError extends ncCRUD {
 
 	createDefault() {
 		return {};
+	}
+
+	getItemTitle(item){
+		return `${item.errorID}#${item.details.name}`;
 	}
 
 }
