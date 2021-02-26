@@ -55,13 +55,13 @@ class ncError extends ncCRUD {
 			}, {
 				path: ':details.name',
 				title: 'Сообщение',
-				sortable: true,
-				searchable: true
+				sortable: true
 			}, {
 				path: ':details.message',
 				title: 'Сообщение',
 				sortable: true,
-				searchable: true
+				searchable: true,
+				hideOnMobile: true
 			}, {
 				path: ':env',
 				title: 'Среда',
@@ -78,7 +78,8 @@ class ncError extends ncCRUD {
 					} else {
 						return [];
 					}
-				}
+				},
+				hideOnMobile: true
 			}, {
 				path: ':options',
 				title: 'Дополнительно',
@@ -95,7 +96,8 @@ class ncError extends ncCRUD {
 							};
 						});
 					}
-				}
+				},
+				hideOnMobile: true
 			}, {
 				path: ':repetitions',
 				title: 'Повторения',
@@ -133,7 +135,8 @@ class ncError extends ncCRUD {
 						});
 					}
 					return res;
-				}
+				},
+				hideOnMobile: true
 			}, {
 				path: ':env.date',
 				title: 'Timestamp',
