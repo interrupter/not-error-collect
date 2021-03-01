@@ -39,6 +39,7 @@ try {
 		}, 'json'],
 		['options', {
 			required: true,
+			default: 	{},
 			searchable: true,
 			properties: {
 				String: [''],
