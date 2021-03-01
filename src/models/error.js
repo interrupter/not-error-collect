@@ -27,7 +27,7 @@ try {
 			},
 		}, 'error'],
 		['parent', {
-			required: true,
+			required: false,
 			searchable: true,
 			properties: {
 				String: [
@@ -104,7 +104,7 @@ try {
 						val.hashOptions = Error.createObjectHash(val.options);
 					}
 					if(val.parent){
-						val.parentOptions = Error.createObjectHash(val.parent);
+						val.hashParent = Error.createObjectHash(val.parent);
 					}
 					if(val.env){
 						let dateBack = val.env.date.timestamp;
