@@ -54,7 +54,7 @@ class ncError extends ncCRUD {
 				searchable: true
 			}, {
 				path: ':details.name',
-				title: 'Сообщение',
+				title: 'Название',
 				sortable: true
 			}, {
 				path: ':details.message',
