@@ -48,20 +48,16 @@ class ncError extends ncCRUD {
 				searchable: true,
 				sortable: true
 			}, {
-				path: ':key.title',
-				title: 'From',
-				sortable: true,
-				searchable: true
-			}, {
-				path: ':details.name',
+				path: ':name',
 				title: 'Название',
+				preprocessor: (val, item) => {
+					if (Object.prototype.hasOwnProperty.call(item, 'parent')) {
+						return item.parent.name;
+					} else {
+						return item.details.message;
+					}
+				},
 				sortable: true
-			}, {
-				path: ':details.message',
-				title: 'Сообщение',
-				sortable: true,
-				searchable: true,
-				hideOnMobile: true
 			}, {
 				path: ':env',
 				title: 'Среда',
