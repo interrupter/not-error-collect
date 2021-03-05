@@ -48,11 +48,11 @@ class ncError extends ncCRUD {
 				searchable: true,
 				sortable: true
 			}, {
-				path: ':name',
+				path: ':message',
 				title: 'Название',
 				preprocessor: (val, item) => {
 					if (Object.prototype.hasOwnProperty.call(item, 'parent')) {
-						return item.parent.name;
+						return `${item.details.message} - ${item.parent.message}`;
 					} else {
 						return item.details.message;
 					}
