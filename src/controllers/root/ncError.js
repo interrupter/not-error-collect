@@ -46,7 +46,35 @@ class ncError extends ncCRUD {
 				path: ':errorID',
 				title: 'ID',
 				searchable: true,
-				sortable: true
+				sortable: true,
+				hideOnMobile: true
+			}, {
+				path: ':host',
+				title: 'Site',
+				searchable: true,
+				sortable: true,
+				hideOnMobile: true,
+				preprocessor: (val, item) => {
+					return item.env.browser?item.env.location.host:'';
+				}
+			},{
+				path: ':file',
+				title: 'File',
+				searchable: 	true,
+				sortable: 		true,
+				hideOnMobile: true,
+				preprocessor: (val, item) => {
+					return item.details.fileName || item.parent.fileName;
+				}
+			},{
+				path: ':line',
+				title: 'Line',
+				searchable: 	true,
+				sortable: 		true,
+				hideOnMobile: true,
+				preprocessor: (val, item) => {
+					return item.details.lineNumber || item.parent.lineNumber;
+				}
 			}, {
 				path: ':message',
 				title: 'Название',
@@ -58,7 +86,7 @@ class ncError extends ncCRUD {
 					}
 				},
 				sortable: true
-			}, {
+			}, /*{
 				path: ':env',
 				title: 'Среда',
 				type: 'tag',
@@ -133,14 +161,16 @@ class ncError extends ncCRUD {
 					return res;
 				},
 				hideOnMobile: true
-			}, {
+			}, */
+			{
 				path: ':env.date',
 				title: 'Timestamp',
 				sortable: true,
 				searchable: true,
 				preprocessor: (value) => {
 					return Common.LocalizeTimestamp(value.timestamp, value.offset);
-				}
+				},
+				hideOnMobile: false
 			}, {
 				path: ':_id',
 				title: 'Действия',
