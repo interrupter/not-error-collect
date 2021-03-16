@@ -13,12 +13,14 @@ let manifest = {
 		top:{
 			sections:[{
 				id: 		'system',
-				title: 	'Система'
+				title: 	'Система',
+				place: 	'end'
 			}],
 			items: [{
-				section: 'system',
-				title: 	'Ошибки',
-				url: '/error'
+				id: 			'',
+				section: 	'system.errors',
+				title: 		'Ошибки',
+				url: 			'/error'
 			}],
 		},
 		side: {
@@ -27,12 +29,10 @@ let manifest = {
 				title: 'Система'
 			}],
 			items:[{
+				id: 		 'system.errors',
 				section: 'system',
-				title: 	'Ошибки',
-				items:[{
-					title: 'Список',
-					url: '/error'
-				}]
+				title: 		'Ошибки',
+				url: 			'/error'
 			}]
 		}
 	},

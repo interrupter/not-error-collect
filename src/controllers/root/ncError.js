@@ -55,7 +55,7 @@ class ncError extends ncCRUD {
 				sortable: true,
 				hideOnMobile: true,
 				preprocessor: (val, item) => {
-					return item.env.browser?item.env.location.host:'';
+					return item.env.browser?item.env.location.host:'?';
 				}
 			},{
 				path: ':file',
@@ -64,7 +64,10 @@ class ncError extends ncCRUD {
 				sortable: 		true,
 				hideOnMobile: true,
 				preprocessor: (val, item) => {
-					return item.details.fileName || item.parent.fileName;
+					if(item.parent && item.parent.fileName){
+						return item.parent.fileName;
+					}
+					return item.details.fileName || '?';
 				}
 			},{
 				path: ':line',
@@ -73,7 +76,10 @@ class ncError extends ncCRUD {
 				sortable: 		true,
 				hideOnMobile: true,
 				preprocessor: (val, item) => {
-					return item.details.lineNumber || item.parent.lineNumber;
+					if(item.parent && item.parent.lineNumber){
+						return item.parent.lineNumber;
+					}
+					return item.details.lineNumber || '?';
 				}
 			}, {
 				path: ':message',
