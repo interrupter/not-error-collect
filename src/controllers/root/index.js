@@ -11,28 +11,19 @@ let manifest = {
 	},
 	menu:{
 		top:{
-			sections:[{
-				id: 		'system',
-				title: 	'Система',
-				place: 	'end'
-			}],
 			items: [{
-				id: 			'',
+				id: 			'system',
 				section: 	'system.errors',
 				title: 		'Ошибки',
 				url: 			'/error'
 			}],
 		},
 		side: {
-			sections:[{
-				id: 'system',
-				title: 'Система'
-			}],
 			items:[{
 				id: 		 'system.errors',
 				section: 'system',
-				title: 		'Ошибки',
-				url: 			'/error'
+				title: 	 'Ошибки',
+				url: 		 '/error'
 			}]
 		}
 	},
