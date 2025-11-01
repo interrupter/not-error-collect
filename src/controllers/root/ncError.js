@@ -1,98 +1,102 @@
-import UIJSON from '../common/ui.json.svelte';
-import UIError from '../common/ui.error.svelte';
-import Validators from '../common/validators.js';
-import Common from '../common';
-import {
-	ncCRUD,
-	Form
-} from 'not-bulma';
+import UIJSON from "../common/ui.json.svelte";
+import UIError from "../common/ui.error.svelte";
+import Validators from "../common/validators.js";
+import Common from "../common";
+import { ncCRUD, Form } from "not-bulma";
 
-const MODULE_NAME = '';
-const MODEL_NAME = 'Error';
+const MODULE_NAME = "";
+const MODEL_NAME = "Error";
 
 const LABELS = {
-	plural: 'Ошибки',
-	single: 'Ошибка',
+    plural: "Ошибки",
+    single: "Ошибка",
 };
 
 class ncError extends ncCRUD {
-	constructor(app, params) {
-		super(app, `${MODULE_NAME}.${MODEL_NAME}`);
-		Form.addComponent('UIJSON', UIJSON);
-		Form.addComponent('UIError', UIError);
-		this.setModuleName(MODULE_NAME.toLowerCase());
-		this.setModelName(MODEL_NAME.toLowerCase());
-		this.setOptions('names', LABELS);
-		this.setOptions('role', 'root');
-		this.setOptions('Validators', Validators);
-		this.setOptions('params', params);
-		this.setOptions('list', {
-			interface: {
-				factory: this.make.error,
-					combined: true,
-					combinedAction: 'listAndCount'
-			},
-			pager: {
-				size: 100,
-				page: 0
-			},
-			sorter: {
-				errorID: -1
-			},
-			showSelect: true,
-			showSearch: true,
-			idField: '_id',
-			fields: [{
-				path: ':errorID',
-				title: 'ID',
-				searchable: true,
-				sortable: true,
-				hideOnMobile: true
-			}, {
-				path: ':host',
-				title: 'Site',
-				searchable: true,
-				sortable: true,
-				hideOnMobile: true,
-				preprocessor: (val, item) => {
-					return item.env.browser?item.env.location.host:'?';
-				}
-			},{
-				path: ':file',
-				title: 'File',
-				searchable: 	true,
-				sortable: 		true,
-				hideOnMobile: true,
-				preprocessor: (val, item) => {
-					if(item.parent && item.parent.fileName){
-						return item.parent.fileName;
-					}
-					return item.details.fileName || '?';
-				}
-			},{
-				path: ':line',
-				title: 'Line',
-				searchable: 	true,
-				sortable: 		true,
-				hideOnMobile: true,
-				preprocessor: (val, item) => {
-					if(item.parent && item.parent.lineNumber){
-						return item.parent.lineNumber;
-					}
-					return item.details.lineNumber || '?';
-				}
-			}, {
-				path: ':message',
-				title: 'Название',
-				preprocessor: (val, item) => {
-					if (Object.prototype.hasOwnProperty.call(item, 'parent')) {
-						return `${item.details.message} - ${item.parent.message}`;
-					} else {
-						return item.details.message;
-					}
-				},
-				sortable: true
-			}, /*{
+    constructor(app, params) {
+        super(app, `${MODULE_NAME}.${MODEL_NAME}`);
+        Form.addComponent("UIJSON", UIJSON);
+        Form.addComponent("UIError", UIError);
+        this.setModuleName(MODULE_NAME.toLowerCase());
+        this.setModelName(MODEL_NAME.toLowerCase());
+        this.setOptions("names", LABELS);
+        this.setOptions("role", "root");
+        this.setOptions("Validators", Validators);
+        this.setOptions("params", params);
+        this.setOptions("list", {
+            interface: {
+                factory: this.make.error,
+                combined: true,
+                combinedAction: "listAndCount",
+            },
+            pager: {
+                size: 100,
+                page: 0,
+            },
+            sorter: {
+                errorID: -1,
+            },
+            showSelect: true,
+            showSearch: true,
+            idField: "_id",
+            fields: [
+                {
+                    path: ":errorID",
+                    title: "ID",
+                    searchable: true,
+                    sortable: true,
+                    hideOnMobile: true,
+                },
+                {
+                    path: ":host",
+                    title: "Site",
+                    searchable: true,
+                    sortable: true,
+                    hideOnMobile: true,
+                    preprocessor: (val, item) => {
+                        return item.env.browser ? item.env.location.host : "?";
+                    },
+                },
+                {
+                    path: ":file",
+                    title: "File",
+                    searchable: true,
+                    sortable: true,
+                    hideOnMobile: true,
+                    preprocessor: (val, item) => {
+                        if (item.parent && item.parent.fileName) {
+                            return item.parent.fileName;
+                        }
+                        return item.details.fileName || "?";
+                    },
+                },
+                {
+                    path: ":line",
+                    title: "Line",
+                    searchable: true,
+                    sortable: true,
+                    hideOnMobile: true,
+                    preprocessor: (val, item) => {
+                        if (item.parent && item.parent.lineNumber) {
+                            return item.parent.lineNumber;
+                        }
+                        return item.details.lineNumber || "?";
+                    },
+                },
+                {
+                    path: ":message",
+                    title: "Название",
+                    preprocessor: (val, item) => {
+                        if (
+                            Object.prototype.hasOwnProperty.call(item, "parent")
+                        ) {
+                            return `${item.details.message} - ${item.parent.message}`;
+                        } else {
+                            return item.details.message;
+                        }
+                    },
+                    sortable: true,
+                } /*{
 				path: ':env',
 				title: 'Среда',
 				type: 'tag',
@@ -167,41 +171,47 @@ class ncError extends ncCRUD {
 					return res;
 				},
 				hideOnMobile: true
-			}, */
-			{
-				path: ':env.date',
-				title: 'Timestamp',
-				sortable: true,
-				searchable: true,
-				preprocessor: (value) => {
-					return Common.LocalizeTimestamp(value.timestamp, value.offset);
-				},
-				hideOnMobile: false
-			}, {
-				path: ':_id',
-				title: 'Действия',
-				type: 'button',
-				preprocessor: (value) => {
-					return [{
-						action: this.goDetails.bind(this, value),
-						title: 'Подробнее',
-						size: 'small'
-					}];
-				},
-			}]
-		});
-		this.start();
-		return this;
-	}
+			}, */,
+                {
+                    path: ":env.date",
+                    title: "Timestamp",
+                    sortable: true,
+                    searchable: true,
+                    preprocessor: (value) => {
+                        return Common.LocalizeTimestamp(
+                            value.timestamp,
+                            value.offset
+                        );
+                    },
+                    hideOnMobile: false,
+                },
+                {
+                    path: ":_id",
+                    title: "Действия",
+                    type: "button",
+                    preprocessor: (value) => {
+                        return [
+                            {
+                                action: () => this.goDetails(value),
+                                title: "Подробнее",
+                                size: "small",
+                            },
+                        ];
+                    },
+                },
+            ],
+        });
+        this.start();
+        return this;
+    }
 
-	createDefault() {
-		return {};
-	}
+    createDefault() {
+        return {};
+    }
 
-	getItemTitle(item){
-		return `${item.errorID}#${item.details.name}`;
-	}
-
+    getItemTitle(item) {
+        return `${item.errorID}#${item.details.name}`;
+    }
 }
 
 export default ncError;
